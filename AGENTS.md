@@ -40,3 +40,7 @@
 - 任何由 AI 编写的辅助分析、解析、调试、临时验证用的 Python 脚本，**必须统一存放至项目的 `99_AI_Scripts/` 目录**（若为跨项目通用脚本，则存放至知识库的 `ai-scripts/` 目录）。
 - **严禁**将 AI 生成的临时或分析脚本混入 `05_Tools/`（正式编译烧录脚本）或 `scripts/`（核心生产脚手架）目录中。
 
+## 6. 跨设备路径可移植性说明
+- 若在另一台新设备（如仅有 C 盘或 macOS/Linux）上未找到 `D:\embededTemplate\embedded-knowledge-base\`，请优先检查当前工程同级目录 `../embedded-knowledge-base/` 或询问用户知识库的新路径，切勿静默跳过知识库加载。
+
+
