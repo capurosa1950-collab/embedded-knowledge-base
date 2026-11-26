@@ -43,4 +43,12 @@
 ## 6. 跨设备路径可移植性说明
 - 若在另一台新设备（如仅有 C 盘或 macOS/Linux）上未找到 `D:\embededTemplate\embedded-knowledge-base\`，请优先检查当前工程同级目录 `../embedded-knowledge-base/` 或询问用户知识库的新路径，切勿静默跳过知识库加载。
 
+## 7. 嘉立创 EDA 自动化工具链（easyeda-agent）固定路径
+- **CLI / 守护进程可执行文件**：`C:\Users\WEI\.local\bin\easyeda.exe`（当前版本 `v1.21.0`，已加入用户 `PATH`）
+- **守护进程（Daemon）监听地址**：`127.0.0.1:60832`（固定首选端口 `60832`，兼容范围 `60832-60841`；启动命令：`easyeda.exe daemon start`）
+- **本地源码与 MCP 服务入口**：`D:\embededTemplate\easyeda-agent\mcp\src\server.mjs`（已在 `C:\Users\WEI\.gemini\config\mcp_config.json` 配置 `EASYEDA_BIN`）
+- **Skill 与运行时目录**：Skill 位于 `C:\Users\WEI\.gemini\config\skills\easyeda-agent\`；运行 PID / 审计 / 检查点位于 `C:\Users\WEI\.easyeda-agent\`
+- **详细环境与恢复笔记**：见本库根目录 [`easyeda-agent-env.md`](./easyeda-agent-env.md)
+
+
 
