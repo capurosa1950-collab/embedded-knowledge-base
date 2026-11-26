@@ -1,0 +1,32 @@
+{
+  "$schema": "https://repomix.com/schemas/config.json",
+  "output": {
+    "filePath": "repomix-output.txt",
+    "style": "markdown",
+    "removeComments": false,
+    "removeEmptyLines": true,
+    "topFiles": [
+      "AGENTS.md",
+      "README.md",
+      "templates/Pinout_Template.md",
+      "hardware-profiles/board-template.md"
+    ]
+  },
+  "include": [
+    "AGENTS.md",
+    "README.md",
+    "chips/**/*.md",
+    "hardware-profiles/**/*.md",
+    "protocols/**/*.md",
+    "templates/**/*.md"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "customPatterns": [
+      "scripts/**",
+      "*.bat",
+      "*.sh",
+      "repomix-output.txt"
+    ]
+  }
+}
