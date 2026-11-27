@@ -23,7 +23,7 @@
 
 ## 3. 项目目录标准与职责划分
 面对工程代码时，请严格按以下目录层级读取和定位代码：
-- `00_Docs/`：系统规格书、引脚映射表（`Pinout.md`）、芯片参考手册摘要。
+- `00_Docs/`：系统规格书、引脚映射表（`Pinout.md`）、芯片参考手册摘要、`Debug_Logs/`（调试与联调日志归档）。
 - `01_Hardware/`：原理图、PCB 设计文件、BOM。
 - `02_Firmware/`：单片机固件源码（`Drivers/`, `Middlewares/`, `App/`）。
 - `03_Software/`：上位机、Python 调试脚本。
@@ -49,6 +49,17 @@
 - **本地源码与 MCP 服务入口**：`D:\embededTemplate\easyeda-agent\mcp\src\server.mjs`（已在 `C:\Users\WEI\.gemini\config\mcp_config.json` 配置 `EASYEDA_BIN`）
 - **Skill 与运行时目录**：Skill 位于 `C:\Users\WEI\.gemini\config\skills\easyeda-agent\`；运行 PID / 审计 / 检查点位于 `C:\Users\WEI\.easyeda-agent\`
 - **详细环境与恢复笔记**：见本库根目录 [`easyeda-agent-env.md`](./easyeda-agent-env.md)
+
+## 8. Windows 批处理脚本（`.bat`）字符编码铁律
+- **强制编码**：后续所有项目生成的 `.bat` / `.cmd` 批处理脚本，**必须使用 `GBK`（代码页 `CP936` / ANSI）编码与 `CRLF` 行尾**保存。
+- **禁止行为**：严禁直接以 `UTF-8`（尤其是 `UTF-8 with BOM`）编码保存含中文的 `.bat` 文件，避免 Windows `cmd.exe` 默认 `CP936` 下出现中文乱码、路径匹配失败、菜单跳转/标签解析异常或命令截断。
+- **校验要求**：生成 `.bat` 后需通过脚本或编码检测确认其可无损编码为 `gbk`（无 BOM）。
+
+## 9. 嵌入式 Web 测试上位机与日志导出铁律
+- **日志导出直存项目目录**：上位机导出串口/协议日志时，**严禁落入浏览器 `Downloads` 目录，也严禁弹出文件选择框让用户手动选路径**；必须经本地后台（如 `server.py` 的 `/api/export-log`）**静默写入当前工程 `00_Docs/Debug_Logs/`**，并在当前操作页即时展示保存成功提示。
+- **CORS 与行清洗规范**：本地 HTTP 后台服务在 `end_headers()` 统一添加单次 `Access-Control-Allow-Origin: *`，严禁重复发送该响应头导致浏览器跨域拦截；串口接收应按 `\n` 整行拼接并在导出前剥离冗余 `\r` 与纯空行。
+- **MQTT 接入方式**：若目标 Broker 未开通 WebSocket 端口（如 `8083`）仅支持原生 TCP（如 `1883`、`32224`），Web 上位机应默认内置本地 WebSocket-to-TCP 透传代理，同时保留 `ws://` 直连切换选项。
+- **可复用构建与烧录脚本**：`ML307R-DC` 编译打包与 USB 烧录通用脚本模板保留在知识库 `scripts/ml307r_build_and_pack.bat` 与 `scripts/ml307r_flash_usb.bat`。
 
 
 

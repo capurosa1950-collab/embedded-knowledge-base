@@ -13,7 +13,9 @@ embedded-knowledge-base/
 ├── repomix.config.json          # 一键打包知识库为单文件的配置文件
 │
 ├── scripts/                     # 自动化效率脚本
-│   └── create_project.bat       # 【双击即用】一键生成符合规范的新项目脚手架
+│   ├── create_project.bat       # 【双击即用】一键生成符合规范的新项目脚手架
+│   ├── ml307r_build_and_pack.bat # ML307R-DC 一键同步编译与 FOTA 打包脚本 (GBK/CRLF)
+│   └── ml307r_flash_usb.bat     # ML307R-DC USB 安全烧录脚本 (基于 adownload)
 │
 ├── templates/                   # 模板中心
 │   ├── project-template/        # 新项目标准结构模板
