@@ -8,29 +8,25 @@
 
 ```text
 embedded-knowledge-base/
-├── AGENTS.md                    # 给所有 AI 的全局指令与嵌入式代码铁律
+├── AGENTS.md                    # 顶层路由索引 + 固件/上位机/脚本全局铁律
 ├── README.md                    # 本知识库说明文档
 ├── repomix.config.json          # 一键打包知识库为单文件的配置文件
 │
-├── scripts/                     # 自动化效率脚本
-│   ├── create_project.bat       # 【双击即用】一键生成符合规范的新项目脚手架
-│   ├── ml307r_build_and_pack.bat # ML307R-DC 一键同步编译与 FOTA 打包脚本 (GBK/CRLF)
-│   └── ml307r_flash_usb.bat     # ML307R-DC USB 安全烧录脚本 (基于 adownload)
+├── hardware/                    # 【硬件与 PCB 专属域】
+│   ├── AGENTS_HW.md             # 硬件原理图与 PCB 设计 AI 专属铁律
+│   ├── circuits/                # 已验证可复用单元电路库（AC-DC、DCDC、485、4G、20N06）
+│   ├── pcb-rules/               # 嘉立创工业混合信号 PCB 规则与手工布线 7 步顺序
+│   ├── bom-preferred/           # 个人优选元器件与选型避坑参考表
+│   └── checklists/              # 原理图评审与投板前 PCB/DFM 自检清单
 │
-├── templates/                   # 模板中心
-│   ├── project-template/        # 新项目标准结构模板
-│   ├── Pinout_Template.md       # 引脚与外设映射表模板
-│   ├── Specs_Template.md        # 需求规格与设计参数模板
-│   └── Packing_Spec_Template.md # 【量产交付与出货清单规范模板】
+├── chips/                       # 【软硬共享】芯片级硬件/固件踩坑与 Errata 库
+├── hardware-profiles/           # 【软硬共享】各项目硬件板卡画像（电源轨、引脚、器件）
+├── protocols/                   # 【软硬共享】通信协议与时序调试经验
+├── datasheets/                  # 常用小体积数据手册与摘要索引（大型资产建议外置）
 │
-├── chips/                       # 芯片级硬件踩坑与 Errata 库
-│   └── stm32/                   # STM32 系列踩坑记录（附带示例）
-│
-├── hardware-profiles/           # 硬件板卡画像（引脚、电源轨、核心器件）
-│   └── board-template.md        # 板卡画像标准模板
-│
-└── protocols/                   # 通信协议与时序调试经验
-    └── communication-checklist.md # 串口/I2C/SPI/CAN 联调自查表
+├── scripts/                     # 自动化效率脚本（脚手架、ML307R 编译/烧录）
+├── ai-scripts/                  # 跨项目 AI 临时分析/辅助脚本隔离区
+└── templates/                   # 新项目结构、Pinout、规格书与装箱规范模板
 ```
 
 ---

@@ -7,6 +7,7 @@
     "removeEmptyLines": true,
     "topFiles": [
       "AGENTS.md",
+      "hardware/AGENTS_HW.md",
       "README.md",
       "templates/Pinout_Template.md",
       "hardware-profiles/board-template.md"
@@ -15,6 +16,7 @@
   "include": [
     "AGENTS.md",
     "README.md",
+    "hardware/**/*.md",
     "chips/**/*.md",
     "hardware-profiles/**/*.md",
     "protocols/**/*.md",
